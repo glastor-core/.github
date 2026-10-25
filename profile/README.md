@@ -41,7 +41,7 @@ modularity, sub-millisecond throughput, and continuous security compliance.
 | :----------------------------------------------------------------- | :----------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
 | **[`glastor-core`](https://github.com/glastor-core/glastor-core)** | Core engine runtime, stateful pipelines, and modular kernel  | [![Active](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/glastor-core/glastor-core) | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
 | **[`.github`](https://github.com/glastor-core/.github)**           | Organization-wide governance, reusable workflows & standards | [![Standards](https://img.shields.io/badge/Type-Org%20Health-blue)](https://github.com/glastor-core/.github)      | [Steering Committee](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md) |
-| **[`nemesis`](https://github.com/glastor-core/nemesis)**            | Automated security auditing, policy gatekeeper & scorecards  | [![Audited](https://img.shields.io/badge/Audit-Passed-purple)](https://github.com/glastor-core/nemesis)            | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
+| **[`nemesis`](https://github.com/glastor-core/nemesis)**           | Automated security auditing, policy gatekeeper & scorecards  | [![Audited](https://img.shields.io/badge/Audit-Passed-purple)](https://github.com/glastor-core/nemesis)           | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
 
 ---
 
