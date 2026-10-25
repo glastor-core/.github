@@ -1,0 +1,44 @@
+name: "DevSecOps & Hygiene"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run every Sunday at 02:00 UTC
+    - cron: "0 2 * * 0"
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  security-events: write
+
+jobs:
+  nemesis:
+    name: "Nemesis DevSecOps & Hygiene Gatekeeper"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository (Full History)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Nemesis Universal Auditor
+        uses: glastor-core/nemesis@v1.3.0
+        with:
+          auto-fix: ${{ github.event_name == 'pull_request' }}
+          pr-suggestions: true
+          fail-on-critical: true
+          scan-secrets: true
+          scan-sast: true
+          scan-sca: true
+          scan-hygiene: true
+          scan-licenses: true
+          generate-sbom: true
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}

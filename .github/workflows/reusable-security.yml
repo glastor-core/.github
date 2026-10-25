@@ -1,0 +1,56 @@
+name: "Reusable Security & Supply Chain"
+
+on:
+  workflow_call:
+    inputs:
+      auto-fix:
+        description: "Auto-clean toxic files on pull requests"
+        required: false
+        type: boolean
+        default: false
+      fail-on-critical:
+        description: "Fail workflow on critical findings"
+        required: false
+        type: boolean
+        default: true
+      target-path:
+        description: "Directory or repo path to audit"
+        required: false
+        type: string
+        default: "."
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: false
+      DISCORD_WEBHOOK_URL:
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  security-events: write
+
+jobs:
+  nemesis-audit:
+    name: "Nemesis Universal Auditor"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code (Full History)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Nemesis DevSecOps Auditor
+        uses: glastor-core/nemesis@v1.3.0
+        with:
+          target-path: ${{ inputs.target-path }}
+          auto-fix: ${{ inputs.auto-fix }}
+          pr-suggestions: true
+          fail-on-critical: ${{ inputs.fail-on-critical }}
+          scan-secrets: true
+          scan-sast: true
+          scan-sca: true
+          scan-hygiene: true
+          scan-licenses: true
+          generate-sbom: true
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
