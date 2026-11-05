@@ -60,9 +60,9 @@ zero-bloat modularity, sub-millisecond throughput, and continuous security compl
 We hold ourselves to rigorous open-source standards:
 
 - **[Engineering Leadership (@glastor-dev)](https://github.com/glastor-dev)**: Founded and
-  architected by **Andres** (verified **GitHub Developer Program Member**), building enterprise-grade
-  GitHub ecosystem integrations, high-performance Python/FastAPI & Deno backends, automated security
-  tooling, and high-throughput runtimes under **[glastor.es](https://glastor.es)**
+  architected by **Andres A. Cardoso** (verified **GitHub Developer Program Member**), building
+  enterprise-grade B2B critical systems in **Rust & Python**, Edge runtimes (**Deno 2 / Bun**), and
+  automated DevSecOps tooling since 2010 under **[glastor.es](https://glastor.es)**
   ([`ventas@glastor.es`](mailto:ventas@glastor.es) · [`glastor.info@gmail.com`](mailto:glastor.info@gmail.com)).
 - **[Unified Technical Portal (mdBook)](https://glastor-dev.github.io/glastor-dev/)**: Centralized
   architectural documentation, AST analysis guides, and Dual-Core ecosystem reference.
