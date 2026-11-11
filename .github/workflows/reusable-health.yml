@@ -1,0 +1,76 @@
+name: "Reusable Repo Health & Quality"
+
+on:
+  workflow_call:
+    inputs:
+      check-links:
+        description: "Run Lychee markdown link checker"
+        required: false
+        type: boolean
+        default: true
+      check-rust-security:
+        description: "Run RustSec cargo-audit if Cargo.lock exists"
+        required: false
+        type: boolean
+        default: false
+      check-nemesis:
+        description: "Run GLASTOR® Nemesis DevSecOps audit"
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  security-events: write
+
+jobs:
+  link-checker:
+    name: "🔗 Markdown Link Integrity"
+    if: inputs.check-links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Links with Lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress --exclude-mail --max-concurrency 8 './**/*.md'
+          fail: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  rust-security:
+    name: "🦀 RustSec Advisory Audit"
+    if: inputs.check-rust-security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Audit Cargo Dependencies
+        uses: rustsec/audit-check@v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+  nemesis-hygiene:
+    name: "🛡️ Nemesis Hygiene & Secret Audit"
+    if: inputs.check-nemesis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run GLASTOR® Nemesis
+        uses: glastor-core/nemesis@v1
+        with:
+          scan-secrets: true
+          scan-hygiene: true
+          scan-sast: true
+          pr-suggestions: true
+          fail-on-critical: false
