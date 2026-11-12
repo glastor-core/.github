@@ -15,6 +15,8 @@
 [![Binary Audit](https://img.shields.io/badge/Binary%20Audit-Byte--Gauge-10b981.svg?style=for-the-badge)](https://github.com/glastor-core/byte-gauge)
 [![JSR Package](https://img.shields.io/badge/JSR-%40glastor--dev%2Freadmegen-f7df1e.svg?style=for-the-badge&logo=jsr&logoColor=black)](https://jsr.io/@glastor-dev/readmegen)
 [![Official Domain](https://img.shields.io/badge/Web-glastor.es-0ea5e9.svg?style=for-the-badge)](https://glastor.es)
+<br>
+[![Follow @glastor-dev](https://img.shields.io/github/followers/glastor-dev?label=Follow%20%40glastor-dev&style=social)](https://github.com/glastor-dev)
 
 <p align="center">
   <a href="#-about-glastor-core">About</a> •
@@ -130,6 +132,18 @@ We welcome systems engineers, performance architects, and contributors of all ba
   **[GitHub Discussions](https://github.com/orgs/glastor-core/discussions)**.
 - Launch zero-setup development with
   **[GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=glastor-core/glastor-core)**.
+
+---
+
+## ⭐ Star History
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=glastor-core/specter,glastor-core/hyper64,glastor-core/byte-gauge,glastor-core/zerho&type=Date)](https://star-history.com/#glastor-core/specter&glastor-core/hyper64&glastor-core/byte-gauge&glastor-core/zerho&Date)
+
+*If our open-source tools help your engineering team, consider starring our repositories and following [@glastor-dev](https://github.com/glastor-dev) on GitHub!*
+
+</div>
 
 ---
 
