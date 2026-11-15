@@ -1,0 +1,51 @@
+name: "Reusable Project Triage & Roadmap Ingestion"
+
+on:
+  workflow_call:
+    inputs:
+      project-url:
+        description: "Full URL of the organization Project board"
+        required: false
+        type: string
+        default: "https://github.com/orgs/glastor-core/projects/1"
+      auto-label-repo:
+        description: "Whether to tag issue/PR with repo:<repo_name>"
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      PROJECT_PAT:
+        description: "Personal Access Token or GitHub App Token with project write scope"
+        required: false
+
+permissions:
+  issues: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  triage:
+    name: "⚡ Triage to Public Roadmap"
+    runs-on: ubuntu-latest
+    # Keep the public engineering roadmap focused on core development by excluding dependabot
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - name: Apply Repository Tag
+        if: ${{ inputs.auto-label-repo }}
+        run: |
+          REPO_TAG="repo:${{ github.event.repository.name }}"
+          echo "Tagging item with $REPO_TAG"
+          if [ "${{ github.event.issue.number }}" != "" ]; then
+            gh issue edit "${{ github.event.issue.number }}" --add-label "$REPO_TAG" || true
+          elif [ "${{ github.event.pull_request.number }}" != "" ]; then
+            gh pr edit "${{ github.event.pull_request.number }}" --add-label "$REPO_TAG" || true
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add to GLASTOR® Core Public Project Board
+        uses: actions/add-to-project@v1.0.2
+        continue-on-error: true
+        with:
+          project-url: ${{ inputs.project-url }}
+          github-token: ${{ secrets.PROJECT_PAT || secrets.GITHUB_TOKEN }}
