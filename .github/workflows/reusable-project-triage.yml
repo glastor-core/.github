@@ -44,7 +44,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add to GLASTOR® Core Public Project Board
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v2.0.1
         continue-on-error: true
         with:
           project-url: ${{ inputs.project-url }}
