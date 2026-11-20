@@ -13,6 +13,11 @@ on:
         required: false
         type: boolean
         default: true
+      default-assignee:
+        description: "GitHub username to auto-assign newly opened issues (empty to disable)"
+        required: false
+        type: string
+        default: "glastor-dev"
     secrets:
       PROJECT_PAT:
         description: "Personal Access Token or GitHub App Token with project write scope"
@@ -40,6 +45,14 @@ jobs:
           elif [ "${{ github.event.pull_request.number }}" != "" ]; then
             gh pr edit "${{ github.event.pull_request.number }}" --add-label "$REPO_TAG" || true
           fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-Assign New Issue
+        if: ${{ github.event.issue.number != '' && inputs.default-assignee != '' }}
+        run: |
+          echo "Auto-assigning issue #${{ github.event.issue.number }} to ${{ inputs.default-assignee }}"
+          gh issue edit "${{ github.event.issue.number }}" --add-assignee "${{ inputs.default-assignee }}" || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
