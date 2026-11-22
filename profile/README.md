@@ -26,7 +26,6 @@
   <a href="https://github.com/glastor-core/glastor-core/blob/main/ECOSYSTEM.md">Ecosystem</a> •
   <a href="#architecture">Architecture</a> •
   <a href="#quick-start">Quick Start</a> •
-  <a href="#structure">Structure</a> •
   <a href="#security">Security</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#discussions">Discussions</a> •
@@ -85,60 +84,35 @@
 
 <a id="quick-start"></a>
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Try Our Flagships)
 
-### Prerequisites
+### 1. `pii-veil` — Sub-Millisecond Reversible PII & Secret Privacy
 
-- Modern runtime: [Deno 2](https://deno.com/), [Bun](https://bun.sh/), or
-  [Node.js 22+](https://nodejs.org/)
-- Git 2.40+
-
-### Installation & Local Setup
+Try it zero-install in the browser at **[pii-veil.glastor.es](https://pii-veil.glastor.es)**, or install the native Rust CLI (`< 15 MB` RAM):
 
 ```bash
-# Clone the repository
-git clone https://github.com/glastor-core/glastor-core.git
-cd glastor-core
+# Install the native Rust CLI
+cargo install pii-veil-cli
 
-# Verify environment formatting and hygiene
-deno fmt --check || npm run lint
+# Start the local HTTP/SSE DLP reverse proxy or stdio MCP server (Claude / Cursor / Windsurf)
+veil proxy --listen 127.0.0.1:8080 --echo
+veil mcp
 ```
 
----
+### 2. `specter` — Zero-Compiler AST API Contract & SemVer Gatekeeper
 
-<a id="structure"></a>
+Drop directly into `.github/workflows/ci.yml` (`< 5 ms` Rust + TypeScript AST diff, SARIF 2.1.0 & CycloneDX 1.5 SBOM):
 
-## 📂 Project Structure
+```yaml
+- uses: glastor-core/specter@v1
+  with:
+    head-dir: "."
+    fail-on-trojan: "true"
+```
 
-```text
-glastor-core/
-├── .devcontainer/            # Zero-setup GitHub Codespaces environment
-├── .github/
-│   ├── ISSUE_TEMPLATE/       # Structured GitHub forms for issues & features
-│   ├── profile/              # Organization-wide showcase README & vector assets
-│   ├── rfcs/                 # Request for Comments architectural proposal framework
-│   ├── workflows/            # High-velocity CI/CD, DevSecOps, & reusable pipelines
-│   ├── CODEOWNERS            # Automated PR review routing by team
-│   ├── FUNDING.yml           # Sponsorship and community funding channels
-│   ├── GOVERNANCE.md         # Transparent leadership & maintainership model
-│   ├── ROADMAP.md            # Public architecture roadmap (Now / Next / Later)
-│   ├── dependabot.yml        # Noise-free weekly grouped dependency updates
-│   ├── labeler.yml           # Automated PR path-based labeling rules
-│   └── PULL_REQUEST_TEMPLATE.md
-├── assets/                   # Architecture diagrams and visual ecosystem assets
-├── src/                      # Core runtime engine implementation
-├── tests/                    # Deterministic test suites
-├── .editorconfig             # Standardized cross-editor code styling
-├── .gitattributes            # Deterministic LF line-ending normalization
-├── .gitignore                # Enterprise-grade secret and artifact exclusion
-├── CITATION.cff              # Citation metadata for academic and industrial attribution
-├── CODE_OF_CONDUCT.md        # Contributor Covenant v2.1
-├── CONTRIBUTING.md           # Conventional Commits, Git Flow, and PR guidelines
-├── ECOSYSTEM.md              # Full organization repository suite & official badges
-├── LICENSE                   # Apache 2.0 Open Source License
-├── README.md                 # Project entry point and documentation
-├── SECURITY.md               # Responsible vulnerability disclosure policy
-└── SUPPORT.md                # Community channels, discussions, and enterprise support
+```bash
+# Or install the CLI locally via crates.io
+cargo install specter-cli
 ```
 
 ---
