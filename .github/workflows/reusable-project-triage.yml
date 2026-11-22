@@ -49,7 +49,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Auto-Assign New Issue
-        if: ${{ github.event.issue.number != '' && inputs.default-assignee != '' }}
+        if: ${{ github.event.issue.number != '' && inputs.default-assignee != '' && !contains(github.event.issue.labels.*.name, 'good first issue') && !contains(github.event.issue.labels.*.name, 'help wanted') }}
         run: |
           echo "Auto-assigning issue #${{ github.event.issue.number }} to ${{ inputs.default-assignee }}"
           gh issue edit "${{ github.event.issue.number }}" --add-assignee "${{ inputs.default-assignee }}" || true
