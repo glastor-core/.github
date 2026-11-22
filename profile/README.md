@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://github.com/glastor-core/glastor-core/blob/main/LICENSE)
 [![OpenSSF Scorecard](https://img.shields.io/badge/OpenSSF%20Scorecard-Enforced-blue?style=for-the-badge)](https://github.com/glastor-core/glastor-core/actions/workflows/scorecard.yml)
 [![pii-veil Live Demo](https://img.shields.io/badge/pii--veil-Live%20WASM%20Demo-00c896?style=for-the-badge)](https://pii-veil.glastor.es)
-[![Specter AST](https://img.shields.io/badge/Specter-AST%20SemVer-8b5cf6?style=for-the-badge)](https://github.com/glastor-core/specter)
+[![Specter AST](https://img.shields.io/badge/Specter-AST%20SemVer-8b5cf6?style=for-the-badge)](https://specter.glastor.es)
 [![llms.txt](https://img.shields.io/badge/llms.txt-standard-8A2BE2?style=for-the-badge)](https://github.com/glastor-core/glastor-core/blob/main/llms.txt)
 [![Official Domain](https://img.shields.io/badge/Web-glastor.es-0ea5e9.svg?style=for-the-badge)](https://glastor.es)
 <br>
