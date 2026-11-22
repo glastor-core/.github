@@ -2,154 +2,209 @@
 
 # ⚡ GLASTOR® Core
 
-**Resilient Architecture, High-Performance Systems & Next-Gen Developer Tooling**
+**Sub-millisecond Rust security, AI privacy (`pii-veil`), and zero-compiler AST governance
+(`specter`) — engineered by [glastor.es](https://glastor.es).**
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://github.com/glastor-core/.github/blob/main/LICENSE)
-[![GitHub Developer Program](https://img.shields.io/badge/GitHub-Developer%20Program-181717.svg?style=for-the-badge&logo=github)](https://github.com/glastor-dev)
-[![Governance](https://img.shields.io/badge/Governance-Documented-6366f1.svg?style=for-the-badge)](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md)
-[![Public Roadmap](https://img.shields.io/badge/Roadmap-Live%20Q4--Q2-f59e0b.svg?style=for-the-badge)](https://github.com/glastor-core/.github/blob/main/ROADMAP.md)
-[![Security Policy](https://img.shields.io/badge/Security-Enforced-emerald.svg?style=for-the-badge)](https://github.com/glastor-core/.github/blob/main/SECURITY.md)
-[![DevSecOps](https://img.shields.io/badge/DevSecOps-Nemesis%20Audited-purple.svg?style=for-the-badge)](https://github.com/glastor-core/nemesis)
-[![Predictive CI](https://img.shields.io/badge/Predictive%20CI-Vortex%20AST-06b6d4.svg?style=for-the-badge)](https://github.com/glastor-core/vortex)
-[![API Contract](https://img.shields.io/badge/API%20Contract-Specter%20AST-8b5cf6.svg?style=for-the-badge)](https://github.com/glastor-core/specter)
-[![Binary Audit](https://img.shields.io/badge/Binary%20Audit-Byte--Gauge-10b981.svg?style=for-the-badge)](https://github.com/glastor-core/byte-gauge)
-[![JSR Package](https://img.shields.io/badge/JSR-%40glastor--dev%2Freadmegen-f7df1e.svg?style=for-the-badge&logo=jsr&logoColor=black)](https://jsr.io/@glastor-dev/readmegen)
+[![CI](https://img.shields.io/github/actions/workflow/status/glastor-core/glastor-core/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/glastor-core/glastor-core/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://github.com/glastor-core/glastor-core/blob/main/LICENSE)
+[![OpenSSF Scorecard](https://img.shields.io/badge/OpenSSF%20Scorecard-Enforced-blue?style=for-the-badge)](https://github.com/glastor-core/glastor-core/actions/workflows/scorecard.yml)
+[![pii-veil Live Demo](https://img.shields.io/badge/pii--veil-Live%20WASM%20Demo-00c896?style=for-the-badge)](https://pii-veil.glastor.es)
+[![Specter AST](https://img.shields.io/badge/Specter-AST%20SemVer-8b5cf6?style=for-the-badge)](https://github.com/glastor-core/specter)
+[![llms.txt](https://img.shields.io/badge/llms.txt-standard-8A2BE2?style=for-the-badge)](https://github.com/glastor-core/glastor-core/blob/main/llms.txt)
 [![Official Domain](https://img.shields.io/badge/Web-glastor.es-0ea5e9.svg?style=for-the-badge)](https://glastor.es)
 <br>
-[![Follow @glastor-core](https://img.shields.io/github/followers/glastor-core?label=Follow%20%40glastor-core&style=social)](https://github.com/glastor-core)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/glastor-core/glastor-core)
+[![Watch on GitHub](https://img.shields.io/github/watchers/glastor-core/glastor-core?style=social&label=Watch)](https://github.com/glastor-core/glastor-core/watchers)
+[![Fork on GitHub](https://img.shields.io/github/forks/glastor-core/glastor-core?style=social&label=Fork)](https://github.com/glastor-core/glastor-core/fork)
+[![Star on GitHub](https://img.shields.io/github/stars/glastor-core/glastor-core?style=social)](https://github.com/glastor-core/glastor-core)
 [![Follow @glastor-dev](https://img.shields.io/github/followers/glastor-dev?label=Follow%20%40glastor-dev&style=social)](https://github.com/glastor-dev)
+[![Follow @glastor-core](https://img.shields.io/github/followers/glastor-core?label=Follow%20%40glastor-core&style=social)](https://github.com/glastor-core)
 
 <p align="center">
-  <a href="#-about-glastor-core">About</a> •
-  <a href="#-ecosystem-repositories">Ecosystem</a> •
-  <a href="#️-governance--enterprise-standards">Governance</a> •
-  <a href="#️-security--disclosure">Security</a> •
-  <a href="#-contributing--community">Community</a> •
-  <a href="https://glastor-dev.github.io/glastor-dev/">Technical Docs (mdBook)</a>
+  <a href="#features">Features</a> •
+  <a href="#ecosystem">Flagship Projects</a> •
+  <a href="https://github.com/glastor-core/glastor-core/blob/main/ECOSYSTEM.md">Ecosystem</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#structure">Structure</a> •
+  <a href="#security">Security</a> •
+  <a href="#contributing">Contributing</a> •
+  <a href="#discussions">Discussions</a> •
+  <a href="#license">License</a>
 </p>
 
 ---
 
 </div>
 
-## 🌐 About GLASTOR® Core
+<a id="features"></a>
 
-**GLASTOR® Core** is an engineering organization dedicated to crafting resilient, modern foundations
-for cloud, edge, and developer platforms. Operating under the **Dual-Core Architecture** alongside
-**[@glastor-dev](https://github.com/glastor-dev)**, our systems prioritize deterministic execution,
-zero-bloat modularity, sub-millisecond throughput, and continuous security compliance.
+## 🌟 Key Features & Highlights
+
+- **⚡ Sub-Millisecond Rust Performance**: `165 µs` reversible PII/secret redaction (`pii-veil`) and
+  `< 5 ms` zero-compiler polyglot AST diffing (`specter`) with `< 15 MB` memory footprint.
+- **🔐 Reversible AI Privacy & Streaming (`pii-veil`)**: 18 mathematical checksum detectors (Luhn,
+  IBAN Mod-97, SSN, DNI/CUIT), encrypted vaults, real-time SSE token restoration (`69.6 µs/chunk`),
+  and built-in MCP server (`veil mcp`).
+- **🔒 Zero-Trust API & Supply-Chain Guard (`specter`)**: Cryptographic public API fingerprinting
+  (`SHA-256`), Trojan Breaking-Change detection, and mathematical SemVer enforcement across Rust &
+  TypeScript.
+- **📦 Polyglot & Multi-Channel Distribution**: Native crates (`crates.io`), Python (`PyPI`),
+  Node.js (`npm`), Go SDK, WebAssembly ([`pii-veil.glastor.es`](https://pii-veil.glastor.es)),
+  Homebrew, and Official MCP Registry.
+- **🤖 DevSecOps & GitHub Actions Native**: Published on GitHub Marketplace with SARIF 2.1.0 Code
+  Scanning, CycloneDX 1.5 SBOM, OpenSSF Scorecard, and automated CI governance.
+
+---
+
+<a id="ecosystem"></a>
+
+## 🚀 Flagship Projects
+
+| Project                                                    | Purpose                                                                                             | Key Benchmark / SLA                                                          | Links & Distribution                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[`pii-veil`](https://github.com/glastor-core/pii-veil)** | Sub-millisecond reversible PII & secret anonymizer for LLMs, AI agents, MCP & real-time SSE streams | `165 µs` prompt latency (`212x` vs Presidio) · `69.6 µs` SSE · `< 15 MB` RAM | [![Live WASM Demo](https://img.shields.io/badge/Live%20Demo-pii--veil.glastor.es-00c896?style=flat-square)](https://pii-veil.glastor.es) [![crates.io](https://img.shields.io/crates/v/pii-veil-core?style=flat-square&color=orange)](https://crates.io/crates/pii-veil-core) [![GitHub](https://img.shields.io/github/stars/glastor-core/pii-veil?style=social)](https://github.com/glastor-core/pii-veil)                                                                                   |
+| **[`specter`](https://github.com/glastor-core/specter)**   | Zero-compiler polyglot AST API contract differ, Trojan Breaking-Change detector & SemVer gatekeeper | `< 5 ms` Rust + TypeScript AST diff · SARIF 2.1.0 & CycloneDX 1.5 SBOM       | [![Marketplace](https://img.shields.io/badge/GitHub-Marketplace-blue?style=flat-square&logo=github-actions&logoColor=white)](https://github.com/marketplace/actions/glastor-specter-polyglot-ast-api-contract-semver-gatekeeper) [![crates.io](https://img.shields.io/crates/v/specter-cli?style=flat-square&color=orange)](https://crates.io/crates/specter-cli) [![GitHub](https://img.shields.io/github/stars/glastor-core/specter?style=social)](https://github.com/glastor-core/specter) |
+
+> Looking for the full suite (`byte-gauge`, `spec-stream`, `strata`, `hyper64`, `vortex`, `nemesis`,
+> `zerho`, `medusa`, `benchmarks`) and official README badges? See
+> **[ECOSYSTEM.md](https://github.com/glastor-core/glastor-core/blob/main/ECOSYSTEM.md)** or visit
+> **[github.com/glastor-core](https://github.com/glastor-core)**.
+
+---
+
+<a id="architecture"></a>
+
+## 🏛️ Architecture Overview
 
 <p align="center">
-  <img src="assets/architecture.svg" alt="GLASTOR® Core Ecosystem Architecture" width="100%" />
+  <img src="https://res.cloudinary.com/dzualplqi/image/upload/v1795366061/Diagrama_de_Seguridad_GLASTOR_CORE_n5locs.png" alt="GLASTOR® Core Architecture" width="100%" />
 </p>
 
 ---
 
-## 🚀 Ecosystem Repositories
+<a id="quick-start"></a>
 
-| Repository                                                         | Purpose                                                                           | Key Benchmark / SLA                              | Status                                                                                                                        | Governance                                                                            |
-| :----------------------------------------------------------------- | :-------------------------------------------------------------------------------- | :----------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| **[`glastor-core`](https://github.com/glastor-core/glastor-core)** | Core engine runtime, stateful pipelines, and modular kernel                       | `< 0.5ms` pipeline dispatch · Zero-bloat kernel  | [![Active](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/glastor-core/glastor-core)             | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`nemesis`](https://github.com/glastor-core/nemesis)**           | Automated DevSecOps auditing, repo hygiene, auto-fix & compliance CLI/Action      | `< 5s` full repo audit · Zero-config auto-fix    | [![Audited](https://img.shields.io/badge/Audit-Passed-purple)](https://github.com/glastor-core/nemesis)                       | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
-| **[`vortex`](https://github.com/glastor-core/vortex)**             | AST-driven predictive CI orchestrator, barrel pruner, LPT splitter & FinOps       | `~60%` CI runtime & Actions FinOps reduction     | [![Predictive CI](https://img.shields.io/badge/Engine-Vortex%20v1.1-06b6d4)](https://github.com/glastor-core/vortex)          | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`specter`](https://github.com/glastor-core/specter)**           | Zero-Compiler Polyglot AST API Contract Differ, Trojan Guard & SemVer Gatekeeper  | `< 12ms` polyglot AST diff · SARIF 2.1.0 & SBOM  | [![crates.io](https://img.shields.io/crates/v/specter-cli?style=flat-square&color=orange)](https://crates.io/crates/specter-cli) [![downloads](https://img.shields.io/crates/d/specter-cli?style=flat-square&color=blue)](https://crates.io/crates/specter-cli) | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
-| **[`byte-gauge`](https://github.com/glastor-core/byte-gauge)**     | Rust SIMD Binary & Wasm Auditor, `checksec` Hardening, CycloneDX 1.5 SBOM & SARIF | `< 8ms` SIMD ELF/PE/Mach-O/Wasm hardening audit  | [![crates.io](https://img.shields.io/crates/v/byte-gauge?style=flat-square&color=orange)](https://crates.io/crates/byte-gauge) [![downloads](https://img.shields.io/crates/d/byte-gauge?style=flat-square&color=blue)](https://crates.io/crates/byte-gauge) | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
-| **[`zerho`](https://github.com/glastor-core/zerho)**               | High-performance documentation engine for Deno 2 & Edge with `llms.txt`           | `< 15ms` Edge TTFB · Native `llms.txt` index     | [![Mentioned in Awesome Deno](https://awesome.re/mentioned-badge.svg)](https://github.com/denolib/awesome-deno) [![JSR](https://jsr.io/badges/@glastor/zerho/score)](https://jsr.io/@glastor/zerho) | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`medusa`](https://github.com/glastor-core/medusa)**             | Resilient Edge API Gateway & Caching Proxy with Circuit Breaker & Deno KV         | `< 1.8ms` proxy overhead · Single-Flight KV      | [![Gateway](https://img.shields.io/badge/Edge-API%20Gateway-emerald)](https://github.com/glastor-core/medusa)                 | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`hyper64`](https://github.com/glastor-core/hyper64)**           | Next-gen ultra-fast zero-allocation Base64 engine with wide AVX-512 & NEON SIMD   | `10-25 GiB/s` SIMD throughput · `#![no_std]`      | [![crates.io](https://img.shields.io/crates/v/hyper64?style=flat-square&color=orange)](https://crates.io/crates/hyper64) [![downloads](https://img.shields.io/crates/d/hyper64?style=flat-square&color=blue)](https://crates.io/crates/hyper64) | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`strata`](https://github.com/glastor-core/strata)**             | Zero-Node headless accessibility (WAI-ARIA 1.2) & atomic style engine for Rust UI | `0 node_modules` · Deterministic FSM components   | [![crates.io](https://img.shields.io/crates/v/glastor-aria-core?style=flat-square&color=orange)](https://crates.io/crates/glastor-aria-core) [![downloads](https://img.shields.io/crates/d/glastor-aria-core?style=flat-square&color=blue)](https://crates.io/crates/glastor-aria-core) | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`hyper-flow`](https://github.com/glastor-core/hyper-flow)**     | Ultra-high-throughput Edge AI API built with Hono, Bun & OpenAPI 3.1              | `10K+ req/s` Edge AI routing · OpenAPI 3.1       | [![Performance](https://img.shields.io/badge/Edge-AI%20Runtime-f59e0b)](https://github.com/glastor-core/hyper-flow)           | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`spec-stream`](https://github.com/glastor-core/spec-stream)**   | Model-agnostic Speculative Decoding & Paged KV-Cache Engine in pure Rust          | Zero-copy GGUF & PagedAttention LLM inference    | [![Inference](https://img.shields.io/badge/Rust-LLM%20Inference-orange)](https://github.com/glastor-core/spec-stream)          | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`pii-veil`](https://github.com/glastor-core/pii-veil)**         | Sub-millisecond reversible PII & secret anonymizer for LLMs, Agents, SSE & MCP    | `200x` faster than Presidio · Rust/Py/Node/Go    | [![PII Privacy](https://img.shields.io/badge/AI%20Security-PII%20Veil-ef4444)](https://pii-veil.glastor.es/)                    | [Security Team](https://github.com/glastor-core/.github/blob/main/SECURITY.md)        |
-| **[`benchmarks`](https://github.com/glastor-core/benchmarks)**     | Reproducible apples-to-apples HTTP & systems benchmark suite for `glastor.es`     | Rust (Axum) vs Go (Gin) vs Fastify vs FastAPI    | [![Benchmarks](https://img.shields.io/badge/Suite-Reproducible-10b981)](https://github.com/glastor-core/benchmarks)            | [Core Maintainers](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)      |
-| **[`homebrew-tap`](https://github.com/glastor-core/homebrew-tap)** | Official Homebrew Tap for GLASTOR® developer tools and DevSecOps CLIs             | macOS (ARM64/x64) & Linux x64 bottle distribution | [![Homebrew Tap](https://img.shields.io/badge/Tap-glastor--core%2Ftap-orange?style=flat-square&logo=homebrew)](https://github.com/glastor-core/homebrew-tap) | [Operations Team](https://github.com/glastor-core/.github/blob/main/CODEOWNERS)       |
-| **[`.github`](https://github.com/glastor-core/.github)**           | Organization-wide governance, reusable workflows & engineering standards          | `100%` SLSA provenance & branch ruleset coverage | [![Standards](https://img.shields.io/badge/Type-Org%20Health-blue)](https://github.com/glastor-core/.github)                  | [Steering Committee](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md) |
-| **[`glastor-dev`](https://github.com/glastor-dev/glastor-dev)**    | Autonomous Living Profile & AST README Engine (`@glastor-dev/readmegen`)          | `0-WASM` TS AST parser · 4R Code Review Engine   | [![JSR](https://jsr.io/badges/@glastor-dev/readmegen)](https://jsr.io/@glastor-dev/readmegen)                                 | [Lead Architect (@glastor-dev)](https://github.com/glastor-dev)                       |
+## 🚀 Quick Start
 
----
+### Prerequisites
 
-## 🏅 Official Ecosystem Badges (Add to Your README)
+- Modern runtime: [Deno 2](https://deno.com/), [Bun](https://bun.sh/), or
+  [Node.js 22+](https://nodejs.org/)
+- Git 2.40+
 
-Show the community that your repository is protected by the **GLASTOR® Core** engineering suite.
-Copy and paste any badge below into your project's `README.md`:
+### Installation & Local Setup
 
-| Tool              | Preview                                                                                                                                                               | Markdown Snippet                                                                                                                                                        |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GLASTOR® Core** | [![Powered by GLASTOR Core](https://img.shields.io/badge/Powered%20By-GLASTOR%C2%AE%20Core-0ea5e9?style=for-the-badge)](https://github.com/glastor-core/glastor-core) | `[![Powered by GLASTOR Core](https://img.shields.io/badge/Powered%20By-GLASTOR%C2%AE%20Core-0ea5e9?style=for-the-badge)](https://github.com/glastor-core/glastor-core)` |
-| **Specter AST**   | [![API Contract: Specter](https://img.shields.io/badge/API%20Contract-Specter%20AST-8b5cf6?style=for-the-badge)](https://github.com/glastor-core/specter)             | `[![API Contract: Specter](https://img.shields.io/badge/API%20Contract-Specter%20AST-8b5cf6?style=for-the-badge)](https://github.com/glastor-core/specter)`             |
-| **Byte-Gauge**    | [![Binary Audit: Byte-Gauge](https://img.shields.io/badge/Binary%20Audit-Byte--Gauge-10b981?style=for-the-badge)](https://github.com/glastor-core/byte-gauge)         | `[![Binary Audit: Byte-Gauge](https://img.shields.io/badge/Binary%20Audit-Byte--Gauge-10b981?style=for-the-badge)](https://github.com/glastor-core/byte-gauge)`         |
-| **Vortex CI**     | [![Predictive CI: Vortex](https://img.shields.io/badge/Predictive%20CI-Vortex%20AST-06b6d4?style=for-the-badge)](https://github.com/glastor-core/vortex)              | `[![Predictive CI: Vortex](https://img.shields.io/badge/Predictive%20CI-Vortex%20AST-06b6d4?style=for-the-badge)](https://github.com/glastor-core/vortex)`              |
-| **Nemesis**       | [![DevSecOps: Nemesis](https://img.shields.io/badge/DevSecOps-Nemesis%20Audited-purple?style=for-the-badge)](https://github.com/glastor-core/nemesis)                 | `[![DevSecOps: Nemesis](https://img.shields.io/badge/DevSecOps-Nemesis%20Audited-purple?style=for-the-badge)](https://github.com/glastor-core/nemesis)`                 |
+```bash
+# Clone the repository
+git clone https://github.com/glastor-core/glastor-core.git
+cd glastor-core
+
+# Verify environment formatting and hygiene
+deno fmt --check || npm run lint
+```
 
 ---
 
-## 🏛️ Governance & Enterprise Standards
+<a id="structure"></a>
 
-We hold ourselves to rigorous open-source standards:
+## 📂 Project Structure
 
-- **[Engineering Leadership (@glastor-dev)](https://github.com/glastor-dev)**: Founded and
-  architected by **Andres A. Cardoso** (verified **GitHub Developer Program Member**), building
-  enterprise-grade B2B critical systems in **Rust & Python**, Edge runtimes (**Deno 2 / Bun**), and
-  automated DevSecOps tooling since 2010 under **[glastor.es](https://glastor.es)**
-  ([`ventas@glastor.es`](mailto:ventas@glastor.es) ·
-  [`glastor.info@gmail.com`](mailto:glastor.info@gmail.com)).
-- **[Unified Technical Portal (mdBook)](https://glastor-dev.github.io/glastor-dev/)**: Centralized
-  architectural documentation, AST analysis guides, and Dual-Core ecosystem reference.
-- **[Governance Model](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md)**:
-  Transparent leadership, consensus-seeking RFC decisions, and clear paths to maintainership.
-- **[Public Roadmap](https://github.com/glastor-core/.github/blob/main/ROADMAP.md)**: Track what we
-  are building _Now_, _Next_, and _Later_.
-- **[RFC Framework](https://github.com/glastor-core/.github/tree/main/rfcs)**: Formal Request for
-  Comments process for major architectural designs.
-- **[Branch Rulesets](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md)**: Enforced
-  linear history, required reviews, and secret push protection.
-- **[Reusable CI/CD](https://github.com/glastor-core/.github/tree/main/.github/workflows)**:
-  Centralized pipelines for multi-engine verification (Deno 2, Bun, Node 22+) and SLSA supply-chain
-  security.
+```text
+glastor-core/
+├── .devcontainer/            # Zero-setup GitHub Codespaces environment
+├── .github/
+│   ├── ISSUE_TEMPLATE/       # Structured GitHub forms for issues & features
+│   ├── profile/              # Organization-wide showcase README & vector assets
+│   ├── rfcs/                 # Request for Comments architectural proposal framework
+│   ├── workflows/            # High-velocity CI/CD, DevSecOps, & reusable pipelines
+│   ├── CODEOWNERS            # Automated PR review routing by team
+│   ├── FUNDING.yml           # Sponsorship and community funding channels
+│   ├── GOVERNANCE.md         # Transparent leadership & maintainership model
+│   ├── ROADMAP.md            # Public architecture roadmap (Now / Next / Later)
+│   ├── dependabot.yml        # Noise-free weekly grouped dependency updates
+│   ├── labeler.yml           # Automated PR path-based labeling rules
+│   └── PULL_REQUEST_TEMPLATE.md
+├── assets/                   # Architecture diagrams and visual ecosystem assets
+├── src/                      # Core runtime engine implementation
+├── tests/                    # Deterministic test suites
+├── .editorconfig             # Standardized cross-editor code styling
+├── .gitattributes            # Deterministic LF line-ending normalization
+├── .gitignore                # Enterprise-grade secret and artifact exclusion
+├── CITATION.cff              # Citation metadata for academic and industrial attribution
+├── CODE_OF_CONDUCT.md        # Contributor Covenant v2.1
+├── CONTRIBUTING.md           # Conventional Commits, Git Flow, and PR guidelines
+├── ECOSYSTEM.md              # Full organization repository suite & official badges
+├── LICENSE                   # Apache 2.0 Open Source License
+├── README.md                 # Project entry point and documentation
+├── SECURITY.md               # Responsible vulnerability disclosure policy
+└── SUPPORT.md                # Community channels, discussions, and enterprise support
+```
 
 ---
 
-## 🛡️ Security & Disclosure
+<a id="security"></a>
 
-Security is designed into our inner development loop:
+## 🔒 Security & Governance
+
+We maintain strict zero-trust standards:
 
 - **Push Protection**: Automated secret scanning blocks leaked credentials before commits reach
   `main`.
-- **Private Reporting**: Vulnerabilities are addressed under strict SLA timelines via GitHub
-  [Private Vulnerability Reporting](https://github.com/glastor-core/.github/blob/main/SECURITY.md).
-- **Dependency Hygiene**: Weekly grouped dependency updates with continuous vulnerability audits.
+- **Branch Rules**: Direct pushes to `main` are disabled; all merges require peer review and green
+  CI checks.
+- **Vulnerability Reporting**: See [SECURITY.md](https://github.com/glastor-core/glastor-core/blob/main/SECURITY.md) for confidential advisory reporting
+  procedures.
+- **Engineering Leadership**: Directed by [@glastor-dev](https://github.com/glastor-dev) (**GitHub
+  Developer Program Member**) under the official [glastor.es](https://glastor.es) engineering
+  division.
+- **Organization Governance**: Consult [GOVERNANCE.md](https://github.com/glastor-core/.github/blob/main/GOVERNANCE.md) for leadership
+  structure, team roles, and RFC adoption rules.
+- **Community Standards**: Enforced across all community interactions via
+  [CODE_OF_CONDUCT.md](https://github.com/glastor-core/glastor-core/blob/main/CODE_OF_CONDUCT.md).
 
 ---
 
-## 🤝 Contributing & Community
+<a id="discussions"></a>
 
-We welcome systems engineers, performance architects, and contributors of all backgrounds:
+## 💬 Discussions & Support
 
-- Read our
-  **[Contributing Guidelines](https://github.com/glastor-core/.github/blob/main/CONTRIBUTING.md)**
-  and
-  **[Commit Convention](https://github.com/glastor-core/.github/blob/main/COMMIT_CONVENTION.md)**.
-- Review our
-  **[Code of Conduct](https://github.com/glastor-core/.github/blob/main/CODE_OF_CONDUCT.md)** and
-  **[Support Channels](https://github.com/glastor-core/.github/blob/main/SUPPORT.md)**.
-- Start or join discussions in
-  **[GitHub Discussions](https://github.com/orgs/glastor-core/discussions)**.
-- Launch zero-setup development with
-  **[GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=glastor-core/glastor-core)**.
+Need assistance or have an architectural idea?
+
+- Join the community in [GitHub Discussions](https://github.com/orgs/glastor-core/discussions).
+- Review our [Support Guidelines](https://github.com/glastor-core/glastor-core/blob/main/SUPPORT.md) for community channels and SLA details.
+- For enterprise & commercial inquiries: [`founder@glastor.es`](mailto:founder@glastor.es) •
+  [glastor.es](https://glastor.es).
 
 ---
 
-## ⭐ Star History
+<a id="contributing"></a>
 
-<div align="center">
+## 🤝 Contributing
 
-[![Star History Chart](https://api.star-history.com/svg?repos=glastor-core/specter,glastor-core/hyper64,glastor-core/byte-gauge,glastor-core/zerho&type=Date)](https://star-history.com/#glastor-core/specter&glastor-core/hyper64&glastor-core/byte-gauge&glastor-core/zerho&Date)
+We welcome contributions! Please consult the [Contributing Guide](https://github.com/glastor-core/glastor-core/blob/main/CONTRIBUTING.md) to learn about
+our branch standards, commit formatting (`feat:`, `fix:`, etc.), and test coverage expectations.
+Check our [Public Roadmap](https://github.com/glastor-core/.github/blob/main/ROADMAP.md) for active milestones.
 
-*If our open-source tools help your engineering team, consider starring our repositories and following [@glastor-dev](https://github.com/glastor-dev) on GitHub!*
-
-</div>
+> 🔔 **Stay Updated on Releases**: Click **Watch** (top-right) and select **Custom ➔ Releases** for
+> core runtime releases and architectural RFCs.
 
 ---
+
+<a id="citation"></a>
+
+## 📜 Citation
+
+If you use **GLASTOR® Core** in your research or production systems, please cite it using
+[`CITATION.cff`](https://github.com/glastor-core/glastor-core/blob/main/CITATION.cff).
+
+---
+
+<a id="license"></a>
+
+## 📄 License
+
+Distributed under the **Apache License 2.0**. See [`LICENSE`](https://github.com/glastor-core/glastor-core/blob/main/LICENSE) for full details.
 
 <div align="center">
   <sub>© 2010–2026 <a href="https://glastor.es">GLASTOR®</a> (INPI Reg. 4559568 & 4559567) • Dual-Hub Operations (Spain & Argentina · Export Invoice Factura E) • Led by <a href="https://github.com/glastor-dev">@glastor-dev</a> (GitHub Developer Program Member).</sub>
