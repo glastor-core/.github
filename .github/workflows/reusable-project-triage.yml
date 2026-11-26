@@ -24,6 +24,7 @@ on:
         required: false
 
 permissions:
+  contents: read
   issues: write
   pull-requests: write
   repository-projects: write
@@ -37,24 +38,29 @@ jobs:
     steps:
       - name: Apply Repository Tag
         if: ${{ inputs.auto-label-repo }}
-        run: |
-          REPO_TAG="repo:${{ github.event.repository.name }}"
-          echo "Tagging item with $REPO_TAG"
-          if [ "${{ github.event.issue.number }}" != "" ]; then
-            gh issue edit "${{ github.event.issue.number }}" --add-label "$REPO_TAG" || true
-          elif [ "${{ github.event.pull_request.number }}" != "" ]; then
-            gh pr edit "${{ github.event.pull_request.number }}" --add-label "$REPO_TAG" || true
-          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          REPO_TAG="repo:${REPO_NAME}"
+          echo "Tagging item with $REPO_TAG"
+          if [ -n "$ISSUE_NUMBER" ]; then
+            gh issue edit "$ISSUE_NUMBER" --add-label "$REPO_TAG" || true
+          elif [ -n "$PR_NUMBER" ]; then
+            gh pr edit "$PR_NUMBER" --add-label "$REPO_TAG" || true
+          fi
 
       - name: Auto-Assign New Issue
         if: ${{ github.event.issue.number != '' && inputs.default-assignee != '' && !contains(github.event.issue.labels.*.name, 'good first issue') && !contains(github.event.issue.labels.*.name, 'help wanted') }}
-        run: |
-          echo "Auto-assigning issue #${{ github.event.issue.number }} to ${{ inputs.default-assignee }}"
-          gh issue edit "${{ github.event.issue.number }}" --add-assignee "${{ inputs.default-assignee }}" || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          DEFAULT_ASSIGNEE: ${{ inputs.default-assignee }}
+        run: |
+          echo "Auto-assigning issue #${ISSUE_NUMBER} to ${DEFAULT_ASSIGNEE}"
+          gh issue edit "$ISSUE_NUMBER" --add-assignee "$DEFAULT_ASSIGNEE" || true
 
       - name: Add to GLASTOR® Core Public Project Board
         uses: actions/add-to-project@v2.0.1
